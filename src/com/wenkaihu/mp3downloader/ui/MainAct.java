@@ -1,5 +1,8 @@
 package com.wenkaihu.mp3downloader.ui;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -31,11 +34,16 @@ public class MainAct extends Activity {
         mbtn.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				String keyword = autotv.getText().toString().trim();
-				if (keyword == null || keyword.equals("")){
-					Toast.makeText(MainAct.this, R.string.null_search_keyword, Toast.LENGTH_SHORT).show();
-				}else{
-					startActivity(new Intent(MainAct.this, ResultsAct.class).putExtra(CONST.EXTRA_KEY_WORD, keyword));
+				String keyword;
+				try {
+					keyword = URLEncoder.encode(autotv.getText().toString().trim(), CONST.ENCODING);
+					if (keyword == null || keyword.equals("")){
+						Toast.makeText(MainAct.this, R.string.null_search_keyword, Toast.LENGTH_SHORT).show();
+					}else{
+						startActivity(new Intent(MainAct.this, ResultsAct.class).putExtra(CONST.EXTRA_KEY_WORD, keyword));
+					}
+				} catch (UnsupportedEncodingException e) {
+					e.printStackTrace();
 				}
 			}
 		});

@@ -5,46 +5,46 @@
   android:layout_height="match_parent">
   <TextView
   	android:id="@+id/track_number"
-  	android:layout_width="40dp"
+  	android:layout_width="20dp"
   	android:layout_height="wrap_content"
-  	android:background="#FF0000"
+  	android:layout_alignParentLeft="true"
   	android:layout_marginRight="3dp"
-  	android:layout_centerInParent="true"
-  	/>
-  	<TextView
+  	android:layout_marginLeft="3dp"
+  	android:layout_centerVertical="true" />
+  <TextView
   	android:id="@+id/track_name"
-  	android:layout_width="200dp"
+  	android:layout_width="250dp"
   	android:layout_height="wrap_content"
   	android:layout_alignParentTop="true"
   	android:layout_marginTop="2dp"
   	android:layout_toRightOf="@+id/track_number"
-  	android:background="#FFFF00"
-  	/>
-  	<TextView
+  	android:singleLine="true"
+  	android:ellipsize="end"
+  	android:textSize="20dp"/>
+  <TextView
   	android:id="@+id/singer"
-  	android:layout_width="200dp"
+  	android:layout_width="250dp"
   	android:layout_height="wrap_content"
   	android:layout_alignParentBottom="true"
   	android:layout_marginBottom="2dp"
+  	android:layout_alignLeft="@+id/track_name"
   	android:layout_below="@+id/track_name"
-  	android:background="#00FFFF"
   	/>
-  	<TextView
+  <TextView
   	android:id="@+id/track_type"
-  	android:layout_width="200dp"
+  	android:layout_width="50dp"
   	android:layout_height="wrap_content"
-  	android:layout_alignParentBottom="true"
-  	android:layout_marginBottom="2dp"
-  	android:layout_below="@+id/track_name"
-  	android:background="#FF00FF"
+  	android:layout_alignParentTop="true"
+  	android:layout_marginTop="5dp"
+  	android:layout_toRightOf="@+id/track_name"
   	/>
-  	<TextView
+  <TextView
   	android:id="@+id/track_size"
-  	android:layout_width="200dp"
+  	android:layout_width="50dp"
   	android:layout_height="wrap_content"
   	android:layout_alignParentBottom="true"
-  	android:layout_marginBottom="2dp"
-  	android:layout_below="@+id/track_name"
-  	android:background="#0000FF"
+  	android:layout_marginBottom="5dp"
+  	android:layout_alignLeft="@+id/track_type"
+  	android:layout_below="@+id/track_type"
   	/>
 </RelativeLayout>

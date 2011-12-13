@@ -1,5 +1,9 @@
 package com.wenkaihu.mp3downloader.model;
 
+import java.util.HashMap;
+
+import com.wenkaihu.mp3downloader.CONST;
+
 public class TrackInfo {
 	private String track_name;
 	private String singer;
@@ -7,7 +11,20 @@ public class TrackInfo {
 	private String track_size;
 	private String album;
 	private String track_number;
+	private String track_link;
 	
+	public String getTrack_link() {
+		return track_link;
+	}
+
+	public void setTrack_link(String track_link) {
+		this.track_link = track_link;
+	}
+
+	public TrackInfo(){
+		
+	}
+
 	public TrackInfo(String track_name, String singer, String file_type, String track_size, String album, String track_number){
 		this.track_name = track_name;
 		this.singer = singer;
@@ -16,7 +33,7 @@ public class TrackInfo {
 		this.album = album;
 		this.track_number = track_number;
 	}
-	
+
 	public String toString(){
 		StringBuffer sb = new StringBuffer("{");
 		sb.append("track_name:");
@@ -33,6 +50,17 @@ public class TrackInfo {
 		sb.append(track_number);
 		sb.append("}");
 		return sb.toString();
+	}
+
+	public HashMap<String, String> getMap(){
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put(CONST.MAP_TRACK_NAME, this.album.equals("") ? this.track_name : this.track_name + "(" + this.album + ")");
+		map.put(CONST.MAP_SINGER, this.singer);
+		map.put(CONST.MAP_FILE_TYPE, this.file_type);
+		map.put(CONST.MAP_TRACK_SIZE, this.track_size);
+		map.put(CONST.MAP_ALBUM, this.album);
+		map.put(CONST.MAP_TRACK_NUMBER, this.track_number);
+		return map;
 	}
 	
 	public String getTrack_number() {
