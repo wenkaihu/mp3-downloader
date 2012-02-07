@@ -18,16 +18,23 @@ import android.widget.SimpleAdapter;
 import com.wenkaihu.mp3downloader.CONST;
 import com.wenkaihu.mp3downloader.R;
 import com.wenkaihu.mp3downloader.action.TrackAction;
+import com.wenkaihu.mp3downloader.engine.Mp3SkullEngine;
+import com.wenkaihu.mp3downloader.engine.SearchEngine;
 import com.wenkaihu.mp3downloader.model.TrackInfo;
 
 public class ResultsAct extends ListActivity {
 
+	private SearchEngine defaultEngine;
+	private TrackAction trackAction;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.search_results_list);
 		setTitle(R.string.result_title);
 		//setListAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, new String[]{"a", "b"}));
+		defaultEngine = new Mp3SkullEngine();
+		trackAction = new TrackAction(defaultEngine);
 	}
 
 	private List<HashMap<String, String>> tracks = null;
@@ -51,7 +58,7 @@ public class ResultsAct extends ListActivity {
 			@Override
 			protected Boolean doInBackground(Void... params) {
 				try {
-					tracks = getMaps(new TrackAction().searchTracks(key_word));
+					tracks = getMaps(trackAction.searchTracks(key_word));
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
@@ -86,7 +93,8 @@ public class ResultsAct extends ListActivity {
 	
 	protected void downloadTrack(int position) {
 		try {
-			String downlink = new TrackAction().trackDownload(tracks.get(position).get(CONST.MAP_TRACK_LINK));
+			trackAction.trackDownload(tracks.get(position).get(CONST.MAP_TRACK_LINK));
+//			startActivity(new Intent)
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

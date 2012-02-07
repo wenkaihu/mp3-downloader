@@ -13,7 +13,7 @@
             </intent-filter>
         </activity>
 		<activity android:name=".ui.ResultsAct" />
-		
+		<activity android:name=".ui.DownloadAct" />
     </application>
     
     <uses-permission android:name="android.permission.INTERNET" />

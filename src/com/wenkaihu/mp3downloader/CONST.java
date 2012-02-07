@@ -2,19 +2,25 @@ package com.wenkaihu.mp3downloader;
 
 public class CONST {
 
-	// search engine url
+	// baidu search engine url
 	public static final String BAIDU_SEARCH = "http://mp3.baidu.com/m?f=ms&rf=idx&tn=baidump3&word=";
 	public static final String BASE_URL = "http://mp3.baidu.com";
+	// skull search engine url 
+	public static final String SKULL_SEARCH = "http://mp3skull.com/mp3/%s.html";
 	// encoding of webpage
 	public static final String ZH_GB2312 = "gb2312";
 	public static final String UTF_8 = "UTF-8";
 	public static final String ENCODING = ZH_GB2312;
-	// id or tag in the document
+	// id in the baidu document
 	public static final String ID_SONG_RESULT = "songResults";
+	public static final String ID_DOWNLINK = "downlink";
+	// id in the skull document
+	public static final String ID_SONG_HTML = "song_html";
+	// tag in the document
 	public static final String TAG_TR = "tr";
 	public static final String TAG_TD = "td";
 	public static final String TAG_A = "a";
-	public static final String ID_DOWNLINK = "downlink";
+	public static final String TAG_DIV = "div";
 	// attribute in the tag
 	public static final String ATTR_HREF = "href";
 	// key for the intent extra

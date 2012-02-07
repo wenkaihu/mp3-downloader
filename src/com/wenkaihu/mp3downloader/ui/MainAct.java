@@ -7,8 +7,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.wenkaihu.mp3downloader.CONST;
@@ -17,7 +17,7 @@ import com.wenkaihu.mp3downloader.R;
 public class MainAct extends Activity {
 
 	private Button mbtn;
-	private AutoCompleteTextView autotv;
+	private EditText autotv;
 	
 	@Override
     public void onCreate(Bundle savedInstanceState) {
@@ -30,7 +30,7 @@ public class MainAct extends Activity {
 	private void initViews() {
 
         mbtn = (Button) findViewById(R.id.search_button);
-        autotv = (AutoCompleteTextView) findViewById(R.id.search_box);
+        autotv = (EditText) findViewById(R.id.search_box);
         mbtn.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
