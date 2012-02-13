@@ -1,7 +1,7 @@
 package com.wenkaihu.mp3downloader.action;
 
-import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.util.List;
 
 import org.jsoup.Jsoup;
@@ -31,7 +31,7 @@ public class TrackAction {
 	}
 	
 	public List<TrackInfo> searchTracks(String keyword) throws IOException{
-		return parser.getSearchResults(Jsoup.parse(new File(engine.getSearchUrl(keyword)), "UTF-8"));
+		return parser.getSearchResults(Jsoup.parse(new URL(engine.getSearchUrl(keyword)), 3000));
 	}
 	
 	public String trackDownload(String down_link) throws IOException{
