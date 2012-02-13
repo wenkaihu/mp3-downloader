@@ -31,7 +31,7 @@ public class TrackAction {
 	}
 	
 	public List<TrackInfo> searchTracks(String keyword) throws IOException{
-		return parser.getSearchResults(Jsoup.parse(new URL(engine.getSearchUrl(keyword)), 3000));
+		return parser.getSearchResults(Jsoup.parse(new URL(engine.getSearchUrl(keyword)), 30000));
 	}
 	
 	public String trackDownload(String down_link) throws IOException{

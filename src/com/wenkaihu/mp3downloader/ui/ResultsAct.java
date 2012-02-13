@@ -18,13 +18,11 @@ import android.widget.SimpleAdapter;
 import com.wenkaihu.mp3downloader.CONST;
 import com.wenkaihu.mp3downloader.R;
 import com.wenkaihu.mp3downloader.action.TrackAction;
-import com.wenkaihu.mp3downloader.engine.Mp3SkullEngine;
-import com.wenkaihu.mp3downloader.engine.SearchEngine;
 import com.wenkaihu.mp3downloader.model.TrackInfo;
+import com.wenkaihu.mp3downloader.utils.Utils;
 
 public class ResultsAct extends ListActivity {
 
-	private SearchEngine defaultEngine;
 	private TrackAction trackAction;
 	
 	@Override
@@ -32,9 +30,6 @@ public class ResultsAct extends ListActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.search_results_list);
 		setTitle(R.string.result_title);
-		//setListAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, new String[]{"a", "b"}));
-		defaultEngine = new Mp3SkullEngine();
-		trackAction = new TrackAction(defaultEngine);
 	}
 
 	private List<HashMap<String, String>> tracks = null;
@@ -42,6 +37,8 @@ public class ResultsAct extends ListActivity {
 	@Override
 	protected void onStart() {
 		super.onStart();
+		int search_engine = getIntent().getExtras().getInt(CONST.EXTRA_SEARCH_ENGINE);
+		trackAction = new TrackAction(Utils.getFromID(search_engine));
 		final String key_word = getIntent().getExtras().getString(CONST.EXTRA_KEY_WORD);
 		if (key_word == null) {
 			return ;
@@ -76,7 +73,6 @@ public class ResultsAct extends ListActivity {
 		}.execute();
 	}
 	
-	
 	@Override
 	protected void onListItemClick(ListView l, View v, int position, long id) {
 		final int pos = position; 
@@ -90,7 +86,7 @@ public class ResultsAct extends ListActivity {
 			.setNegativeButton("cancel", null).show();
 		super.onListItemClick(l, v, position, id);
 	}
-	
+
 	protected void downloadTrack(int position) {
 		try {
 			trackAction.trackDownload(tracks.get(position).get(CONST.MAP_TRACK_LINK));
@@ -100,7 +96,6 @@ public class ResultsAct extends ListActivity {
 			e.printStackTrace();
 		}
 	}
-
 
 	private List<HashMap<String, String>> getMaps(List<TrackInfo> tracks){
 		if (tracks == null) return null;

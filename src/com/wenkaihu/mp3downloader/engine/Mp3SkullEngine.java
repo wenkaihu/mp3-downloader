@@ -1,5 +1,7 @@
 package com.wenkaihu.mp3downloader.engine;
 
+import java.net.URLEncoder;
+
 import com.wenkaihu.mp3downloader.CONST;
 
 public class Mp3SkullEngine implements SearchEngine {
@@ -15,5 +17,10 @@ public class Mp3SkullEngine implements SearchEngine {
 	public String getDownloadUrl(String downlink) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	@Override
+	public String getSuggestUrl(String keyword) {
+		return CONST.SKULL_SEARCH_SU + URLEncoder.encode(keyword);
 	}
 }

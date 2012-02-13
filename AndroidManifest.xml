@@ -4,9 +4,10 @@
       android:versionCode="1"
       android:versionName="1.0">
 
-    <application android:icon="@drawable/icon" android:label="@string/app_name">
-        <activity android:name=".ui.MainAct"
-                  android:label="@string/app_name">
+    <application android:icon="@drawable/icon" android:label="@string/app_name"
+    android:debuggable="false">
+        <activity android:name=".ui.MainAct" android:label="@string/app_name"
+                  android:configChanges="orientation|keyboardHidden|navigation|keyboard">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -17,4 +18,5 @@
     </application>
     
     <uses-permission android:name="android.permission.INTERNET" />
+    
 </manifest>
