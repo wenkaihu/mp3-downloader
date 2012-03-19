@@ -33,6 +33,16 @@ public class TrackInfo {
 		this.album = album;
 		this.track_number = track_number;
 	}
+	
+	public TrackInfo(String track_name, String singer, String file_type, String track_size, String album, String track_number, String track_link){
+		this.track_name = track_name;
+		this.singer = singer;
+		this.file_type = file_type;
+		this.track_size = track_size;
+		this.album = album;
+		this.track_number = track_number;
+		this.track_link = track_link;
+	}
 
 	public String toString(){
 		StringBuffer sb = new StringBuffer("{");
@@ -48,6 +58,8 @@ public class TrackInfo {
 		sb.append(album);
 		sb.append(", track_number:");
 		sb.append(track_number);
+		sb.append(", track_link:");
+		sb.append(track_link);
 		sb.append("}");
 		return sb.toString();
 	}
@@ -60,6 +72,7 @@ public class TrackInfo {
 		map.put(CONST.MAP_TRACK_SIZE, this.track_size);
 		map.put(CONST.MAP_ALBUM, this.album);
 		map.put(CONST.MAP_TRACK_NUMBER, this.track_number);
+		map.put(CONST.MAP_TRACK_LINK, this.track_link);
 		return map;
 	}
 	
